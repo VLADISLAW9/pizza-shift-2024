@@ -2,13 +2,15 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 
 export default defineConfig({
   plugins: [
+    TanStackRouterVite(),
     react(),
     svgr({
       svgrOptions: {
-        icon: true,
+        icon: true
       },
       include: '**/*.svg'
     })
@@ -17,6 +19,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@providers': path.resolve(__dirname, './src/app/providers'),
       '@ui': path.resolve(__dirname, './src/shared/components/ui'),
       '@images': path.resolve(__dirname, './assets/images'),
       '@components': path.resolve(__dirname, './src/shared/components'),
