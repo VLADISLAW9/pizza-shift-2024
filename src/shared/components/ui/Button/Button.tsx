@@ -1,14 +1,13 @@
-import {
-  Button as _Button,
+import { forwardRef } from 'react';
+import type {
   ButtonProps as _ButtonProps,
-  UnstyledButton as _UnstyledButton,
-  UnstyledButtonProps as _UnstyledButtonProps,
-  ButtonVariant as _ButtonVariant
+  ButtonVariant as _ButtonVariant,
+  UnstyledButtonProps as _UnstyledButtonProps
 } from '@mantine/core';
+import { Button as _Button, UnstyledButton as _UnstyledButton } from '@mantine/core';
 import clsx from 'clsx';
 
 import styles from './Button.module.css';
-import { forwardRef } from 'react';
 
 type ButtonVariant = _ButtonVariant | 'clear';
 
