@@ -1,22 +1,22 @@
 import { forwardRef } from 'react';
 import type {
-  ButtonProps as _ButtonProps,
-  ButtonVariant as _ButtonVariant,
-  UnstyledButtonProps as _UnstyledButtonProps
+  ButtonProps as MantineButtonProps,
+  ButtonVariant as MantineButtonVariant,
+  UnstyledButtonProps as MantineUnstyledButtonProps
 } from '@mantine/core';
-import { Button as _Button, UnstyledButton as _UnstyledButton } from '@mantine/core';
+import { Button as MantineButton, UnstyledButton as MantineUnstyledButton } from '@mantine/core';
 import clsx from 'clsx';
 
 import styles from './Button.module.css';
 
-type ButtonVariant = _ButtonVariant | 'clear';
+type ButtonVariant = MantineButtonVariant | 'clear';
 
-interface ButtonProps extends Omit<_ButtonProps, 'variant'> {
+interface ButtonProps extends Omit<MantineButtonProps, 'variant'> {
   className?: string;
   variant?: ButtonVariant;
 }
 
-type UnstyledButtonProps = _UnstyledButtonProps &
+type UnstyledButtonProps = MantineUnstyledButtonProps &
   Pick<ButtonProps, 'className' | 'leftSection' | 'rightSection' | 'children'>;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps | UnstyledButtonProps>(
@@ -26,7 +26,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps | UnstyledButton
   ) => {
     if (variant === 'clear') {
       return (
-        <_UnstyledButton
+        <MantineUnstyledButton
           ref={ref}
           className={clsx(className, styles.clear_button, styles[size], styles[variant])}
           {...(props as UnstyledButtonProps)}
@@ -34,18 +34,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps | UnstyledButton
           {leftSection && leftSection}
           {children}
           {rightSection && rightSection}
-        </_UnstyledButton>
+        </MantineUnstyledButton>
       );
     }
     return (
-      <_Button
+      <MantineButton
         ref={ref}
         className={clsx(className, styles[size], styles[variant])}
         variant={variant}
-        {...(props as _ButtonProps)}
+        {...(props as MantineButtonProps)}
       >
         {children}
-      </_Button>
+      </MantineButton>
     );
   }
 );
