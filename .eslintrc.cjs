@@ -2,6 +2,7 @@ const { eslint } = require('@vladislaw9/eslint');
 
 module.exports = {
   ...eslint.react,
+  ignorePatterns: ['vite.config.ts'],
   overrides: [
     ...eslint.react.overrides,
     {
@@ -10,8 +11,8 @@ module.exports = {
         atomPostfix: ''
       },
       parserOptions: {
-        tsconfigRootDir: __dirname
-      }
+        tsconfigRootDir: __dirname,
+      },
     }
   ]
 };

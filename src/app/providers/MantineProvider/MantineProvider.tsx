@@ -1,5 +1,5 @@
-import { createTheme, MantineProvider as _MantineProvider } from '@mantine/core';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { createTheme, MantineProvider as DefaultMantineProvider } from '@mantine/core';
 
 const theme = createTheme({
   /** Put your mantine theme override here */
@@ -10,5 +10,5 @@ interface MantineProviderProps {
 }
 
 export const MantineProvider = ({ children }: MantineProviderProps) => (
-  <_MantineProvider theme={theme}>{children}</_MantineProvider>
+  <DefaultMantineProvider theme={theme}>{children}</DefaultMantineProvider>
 );

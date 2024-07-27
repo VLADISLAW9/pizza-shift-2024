@@ -14,10 +14,9 @@
     "paths": {
       "@/*": ["src/*"],
       "@ui/*": ["src/shared/components/ui/*"],
-      "@images/*": ["assets/images/*"],
-      "@icons/*": ["assets/icons/*"],
       "@components/*": ["src/shared/components/*"],
-      "@consts/*": ["src/shared/consts/*"],
+      "@assets/*": ["assets/*"],
+      "@constants/*": ["src/shared/constants/*"],
       "@_types/*": ["src/shared/types/*"],
       "@pages/*": ["src/pages/*"],
       "@hooks/*": ["src/shared/hooks/*"],

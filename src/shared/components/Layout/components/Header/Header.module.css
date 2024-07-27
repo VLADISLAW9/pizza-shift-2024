@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  padding: 24px 240px;
+  border-bottom: 1px solid var(--border-light-color);
+}
+
+.nav_list {
+  display: flex;
+  gap: 24px;
+}

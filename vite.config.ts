@@ -21,14 +21,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@providers': path.resolve(__dirname, './src/app/providers'),
       '@ui': path.resolve(__dirname, './src/shared/components/ui'),
-      '@images': path.resolve(__dirname, './assets/images'),
+      '@assets': path.resolve(__dirname, './assets'),
       '@components': path.resolve(__dirname, './src/shared/components'),
-      '@consts': path.resolve(__dirname, './src/shared/consts'),
-      '@appTypes': path.resolve(__dirname, './src/shared/types'),
+      '@constants': path.resolve(__dirname, './src/shared/constants'),
+      '@_types': path.resolve(__dirname, './src/shared/types'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@hooks': path.resolve(__dirname, './src/shared/hooks'),
-      '@icons': path.resolve(__dirname, './assets/icons'),
-      '@api': path.resolve(__dirname, './src/shared/api'),
       '@store': path.resolve(__dirname, './src/shared/store')
     }
   }
