@@ -1,3 +1,1 @@
-interface AuthPageProps {}
-
-export const AuthPage = ({}: AuthPageProps) => <div>AuthPage</div>;
+export const AuthPage = () => <div>AuthPage</div>;

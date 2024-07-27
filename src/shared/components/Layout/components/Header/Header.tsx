@@ -1,6 +1,6 @@
 import CartIcon from '@assets/icons/cart.svg';
-import ExitIcon from '@assets/icons/exit.svg';
 import ClockIcon from '@assets/icons/clock.svg';
+import ExitIcon from '@assets/icons/exit.svg';
 import UserIcon from '@assets/icons/user.svg';
 import { Routes } from '@constants/routes';
 import { Button } from '@ui/Button';
