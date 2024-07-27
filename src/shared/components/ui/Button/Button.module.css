@@ -1,5 +1,20 @@
-.transparent {
+.clear_button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--text-secondary-color);
+
+  &:hover {
+    color: var(--text-primary-color);
+  }
+
+  &:focus {
+    color: var(--text-secondary-color);
+  }
+
+  &:disabled {
+    color: var(--text-tertiary-color);
+  }
 }
 
 .xs {

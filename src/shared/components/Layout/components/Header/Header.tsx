@@ -1,4 +1,5 @@
 import CartIcon from '@assets/icons/cart.svg';
+import ExitIcon from '@assets/icons/exit.svg';
 import ClockIcon from '@assets/icons/clock.svg';
 import UserIcon from '@assets/icons/user.svg';
 import { Routes } from '@constants/routes';
@@ -32,15 +33,13 @@ export const Header = () => (
     </nav>
     <ul className={styles.actions_list}>
       <li>
-        <Button className={styles.actions_button} variant='transparent'>
-          <CartIcon />
+        <Button leftSection={<CartIcon />} className={styles.actions_button} variant='clear'>
           <Typography variant='typography16_regular'>Корзина</Typography>
         </Button>
       </li>
       <li>
-        <Button className={styles.actions_button} variant='transparent'>
-          <CartIcon />
-          <Typography variant='typography16_regular'>Корзина</Typography>
+        <Button leftSection={<ExitIcon />} className={styles.actions_button} variant='clear'>
+          <Typography variant='typography16_regular'>Выйти</Typography>
         </Button>
       </li>
     </ul>
