@@ -1,10 +1,18 @@
 .header {
   display: flex;
+  align-items: center;
   padding: 24px 240px;
   border-bottom: 1px solid var(--border-light-color);
 }
 
-.nav_list {
+.nav_list, .actions_list {
   display: flex;
   gap: 24px;
+  transform: translateY(-2px);
+}
+
+.nav_link, .actions_button {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }

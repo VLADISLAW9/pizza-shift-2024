@@ -1,0 +1,23 @@
+.transparent {
+  color: var(--text-secondary-color);
+}
+
+.xs {
+  font: var(--font-12-regular);
+}
+
+.sm {
+  font: var(--font-16-regular);
+}
+
+.md {
+  font: var(--font-20-regular);
+}
+
+.lg {
+  font: var(--font-24-regular);
+}
+
+.xl {
+  font: var(--font-32-regular);
+}

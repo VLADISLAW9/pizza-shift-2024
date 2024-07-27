@@ -10,7 +10,15 @@ export default defineConfig({
     react(),
     svgr({
       svgrOptions: {
-        icon: true
+        icon: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'removeViewBox',
+              active: false
+            }
+          ]
+        }
       },
       include: '**/*.svg'
     })

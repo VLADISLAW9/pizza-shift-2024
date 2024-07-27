@@ -1,14 +1,17 @@
-import type { ReactNode } from 'react';
+import type { MantineProviderProps } from '@mantine/core';
 import { createTheme, MantineProvider as DefaultMantineProvider } from '@mantine/core';
 
+import { colors } from './constants/colors';
+
 const theme = createTheme({
-  /** Put your mantine theme override here */
+  primaryColor: 'orange',
+  colors: {
+    orange: colors.orange
+  }
 });
 
-interface MantineProviderProps {
-  children: ReactNode;
-}
-
-export const MantineProvider = ({ children }: MantineProviderProps) => (
-  <DefaultMantineProvider theme={theme}>{children}</DefaultMantineProvider>
+export const MantineProvider = ({ children, ...props }: MantineProviderProps) => (
+  <DefaultMantineProvider theme={theme} {...props}>
+    {children}
+  </DefaultMantineProvider>
 );
