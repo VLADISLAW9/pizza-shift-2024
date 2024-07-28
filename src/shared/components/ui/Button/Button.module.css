@@ -1,20 +1,10 @@
-.clear_button {
+.clear {
   display: flex;
+  width: fit-content;
   align-items: center;
-  gap: 8px;
-  color: var(--text-secondary-color);
-
-  &:hover {
-    color: var(--text-primary-color);
-  }
-
-  &:focus {
-    color: var(--text-secondary-color);
-  }
-
-  &:disabled {
-    color: var(--text-tertiary-color);
-  }
+  padding: 0;
+  border: none;
+  background: none;
 }
 
 .xs {

@@ -13,11 +13,15 @@ type LinkProps = TanStackRouterLinkProps &
   };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ active, className, ...props }, ref) => (
+  ({ active = false, children, className, ...props }, ref) => (
     <TanStackRouterLink
-      className={clsx(styles.link, { [styles.active]: active }, className)}
+      className={clsx(className, styles.link, { [styles.active]: active })}
       ref={ref}
       {...props}
-    />
+    >
+      {typeof children === 'function'
+        ? children({ isActive: active, isTransitioning: false })
+        : children}
+    </TanStackRouterLink>
   )
 );

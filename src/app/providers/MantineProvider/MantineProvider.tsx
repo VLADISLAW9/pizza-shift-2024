@@ -5,9 +5,7 @@ import { colors } from './constants/colors';
 
 const theme = createTheme({
   primaryColor: 'orange',
-  colors: {
-    orange: colors.orange
-  }
+  colors
 });
 
 export const MantineProvider = ({ children, ...props }: MantineProviderProps) => (

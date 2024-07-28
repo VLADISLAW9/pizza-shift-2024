@@ -1,29 +1,39 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 24px 240px;
   justify-content: space-between;
+  padding: 24px 240px;
   border-bottom: 1px solid var(--border-light-color);
 }
 
 .nav {
-  margin-left: 32px;
   flex: 1;
+  margin-left: 32px;
 }
 
-.nav_list, .actions_list {
+.nav_list,
+.actions_list {
   display: flex;
   gap: 24px;
   transform: translateY(-2px);
 }
 
+.actions_button_wrapper {
+  color: var(--text-secondary-color);
 
+  &:hover {
+    color: var(--text-primary-color);
+  }
 
+  &:focus {
+    color: var(--text-secondary-color);
+  }
 
-.nav_link, .actions_button {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  &:disabled {
+    color: var(--text-tertiary-color);
+  }
 }
 
-
+.actions_button {
+  gap: 8px;
+}

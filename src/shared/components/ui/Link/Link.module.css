@@ -1,5 +1,8 @@
 .link {
+  display: flex;
+  align-items: center;
   color: var(--text-secondary-color);
+  gap: 8px;
 
   &:hover {
     color: var(--text-primary-color);

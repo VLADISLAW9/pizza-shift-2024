@@ -12,23 +12,33 @@ import styles from './Button.module.css';
 type ButtonVariant = MantineButtonVariant | 'clear';
 
 interface ButtonProps extends Omit<MantineButtonProps, 'variant'> {
+  onClick?: () => void;
   className?: string;
   variant?: ButtonVariant;
 }
 
 type UnstyledButtonProps = MantineUnstyledButtonProps &
-  Pick<ButtonProps, 'className' | 'leftSection' | 'rightSection' | 'children'>;
+  Pick<ButtonProps, 'className' | 'leftSection' | 'rightSection' | 'children' | 'onClick'>;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps | UnstyledButtonProps>(
   (
-    { children, leftSection, rightSection, className, size = 'md', variant = 'default', ...props },
+    {
+      children,
+      leftSection,
+      rightSection,
+      onClick,
+      className,
+      size = 'md',
+      variant = 'default',
+      ...props
+    },
     ref
   ) => {
     if (variant === 'clear') {
       return (
         <MantineUnstyledButton
           ref={ref}
-          className={clsx(className, styles.clear_button, styles[size], styles[variant])}
+          className={clsx(className, styles.clear, styles[size], styles[variant])}
           {...(props as UnstyledButtonProps)}
         >
           {leftSection && leftSection}
