@@ -1,7 +1,3 @@
-import { Button } from '@ui/Button';
+const HomePage = () => <div>123</div>;
 
-export const HomePage = () => (
-  <div>
-    <Button variant='filled'>123</Button>
-  </div>
-);
+export default HomePage;

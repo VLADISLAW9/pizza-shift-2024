@@ -22,7 +22,7 @@ export const getNavItemsList = (isLoggedIn: boolean) => {
       },
       {
         Icon: ClockIcon,
-        path: Routes.HOME,
+        path: Routes.AUTH,
         text: 'Билеты',
         authOnly: true
       }

@@ -1,6 +1,5 @@
 @import 'reset.css';
 @import 'variables/colors.css';
-@import 'variables/typography.css';
 
 .app {
   min-height: 100vh;

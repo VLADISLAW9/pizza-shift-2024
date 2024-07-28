@@ -1,21 +1,29 @@
+import { useModal } from '@hooks/useModal';
+
 import { getNavItemsList } from '../selectors/getNavItems';
 
 export const useHeader = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
+
+  const [isOpenAuthModal, { open: openAuthModal, close: closeAuthModal }] = useModal();
 
   const navItemsList = getNavItemsList(isLoggedIn);
 
   const onLogout = () => {};
-  const onLogin = () => {};
+  const onLogin = () => {
+    openAuthModal();
+  };
 
   return {
     state: {
       isLoggedIn,
-      navItemsList
+      navItemsList,
+      isOpenAuthModal
     },
     functions: {
       onLogout,
-      onLogin
+      onLogin,
+      closeAuthModal
     }
   };
 };

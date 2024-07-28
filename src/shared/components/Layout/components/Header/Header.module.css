@@ -14,8 +14,14 @@
 .nav_list,
 .actions_list {
   display: flex;
+  align-items: center;
   gap: 24px;
   transform: translateY(-2px);
+}
+
+.actions_button {
+  display: flex;
+  align-items: center;
 }
 
 .actions_button_wrapper {
