@@ -9,7 +9,10 @@
     "lint:ts": "eslint \"**/*.{ts,tsx}\" --fix",
     "lint:css": "npx stylelint \"**/*.css\" --fix",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate-gql": "graphql-codegen --config ./src/shared/graphql/codegen.yml && prettier --write ./app/_src/graphql/__generated__.ts",
+    "codegen": "graphql-codegen --config src/shared/graphql/codegen.ts",
+    "graphql-codegen": "graphql-codegen --config src/shared/graphql/codegen.ts"
   },
   "lint-staged": {
     "*.css": [
@@ -27,16 +30,17 @@
     "@mantine/hooks": "^7.11.2",
     "@tanstack/react-router": "^1.45.10",
     "clsx": "^2.1.1",
-    "g": "^2.0.1",
     "graphql": "^16.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-imask": "^7.6.1",
     "react-number-format": "^5.4.0",
-    "strip-json-comments": "^5.0.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-codegen/typescript-resolvers": "^4.2.1",
     "@tanstack/router-devtools": "^1.45.10",
     "@tanstack/router-plugin": "^1.45.8",
     "@types/node": "^20.14.12",
@@ -59,6 +63,7 @@
     "prettier": "^3.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "@graphql-codegen/client-preset": "4.3.3"
   }
 }

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const otpCodeFormSchema = z.object({
+export const otpStageFormSchema = z.object({
   otpCode: z
     .string()
     .min(1, 'Поле обязательно для заполнения')
@@ -8,4 +8,4 @@ export const otpCodeFormSchema = z.object({
     .transform(Number)
 });
 
-export type OtpCodeFormSchema = z.infer<typeof otpCodeFormSchema>;
+export type OtpStageFormSchema = z.infer<typeof otpStageFormSchema>;
