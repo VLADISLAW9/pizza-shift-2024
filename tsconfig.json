@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "types": ["node", "vite-plugin-svgr/client"],
+    "types": ["node", "vite-plugin-svgr/client", "vite/client"],
     "target": "esnext",
     "module": "esnext",
     "useDefineForClassFields": true,
@@ -22,7 +22,7 @@
       "@hooks/*": ["src/shared/hooks/*"],
       "@api/*": ["src/shared/api/*"],
       "@providers/*": ["src/app/providers/*"],
-      "@store/*": ["src/shared/store/*"],
+      "@store/*": ["src/shared/store/*"]
     },
 
     /* Bundler mode */
@@ -40,8 +40,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "@types/*.d.ts", "./.eslintrc.cjs"],
-
-  "exclude": ["node_modules"],
+  "include": ["src", "@types/global.d.ts"],
+  "exclude": ["node_modules", "./src/shared/graphql/__generated__"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

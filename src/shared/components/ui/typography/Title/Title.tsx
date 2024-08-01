@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
-import type { TitleProps as MantineTitleProps } from '@mantine/core';
-import { Title as MantineTitle } from '@mantine/core';
+import * as Mantine from '@mantine/core';
 
-interface TitleProps extends MantineTitleProps {
+interface TitleProps extends Mantine.TitleProps {
   className?: string;
   children: ReactNode;
 }
 
 export const Title = ({ className, children, ...props }: TitleProps) => (
-  <MantineTitle className={className} {...props}>
+  <Mantine.Title className={className} {...props}>
     {children}
-  </MantineTitle>
+  </Mantine.Title>
 );

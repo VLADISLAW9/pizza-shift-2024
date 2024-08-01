@@ -1,0 +1,1 @@
+export { IndexPageLoading } from './IndexPageLoading';

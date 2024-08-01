@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
-import type { ModalProps as MantineModalProps } from '@mantine/core';
-import { Modal as MantineModal } from '@mantine/core';
+import * as Mantine from '@mantine/core';
 
-interface ModalProps extends MantineModalProps {
+interface ModalProps extends Mantine.ModalProps {
   className?: string;
   children?: ReactNode;
 }
 
 export const Modal = ({ className, children, ...props }: ModalProps) => (
-  <MantineModal className={className} {...props}>
+  <Mantine.Modal className={className} {...props}>
     {children}
-  </MantineModal>
+  </Mantine.Modal>
 );

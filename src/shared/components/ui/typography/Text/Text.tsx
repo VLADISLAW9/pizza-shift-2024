@@ -1,14 +1,13 @@
 import type { ReactNode } from 'react';
-import type { TextProps as MantineTextProps } from '@mantine/core';
-import { Text as MantineText } from '@mantine/core';
+import * as Mantine from '@mantine/core';
 
-interface TextProps extends MantineTextProps {
+interface TextProps extends Mantine.TextProps {
   className?: string;
   children: ReactNode;
 }
 
 export const Text = ({ className, children, ...props }: TextProps) => (
-  <MantineText className={className} {...props}>
+  <Mantine.Text className={className} {...props}>
     {children}
-  </MantineText>
+  </Mantine.Text>
 );

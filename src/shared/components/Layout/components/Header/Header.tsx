@@ -1,7 +1,7 @@
 import CartIcon from '@assets/icons/cart.svg';
 import ExitIcon from '@assets/icons/exit.svg';
 import { AuthForm } from '@components/AuthForm/AuthForm';
-import { Routes } from '@constants/routes';
+import { ROUTES } from '@constants/routes';
 import { UnstyledButton } from '@ui/buttons/UnstyledButton';
 import { Link } from '@ui/Link';
 import { Logo } from '@ui/Logo';
@@ -21,7 +21,7 @@ export const Header = () => {
         <AuthForm />
       </Modal>
       <header className={styles.header}>
-        <Link to={Routes.HOME}>
+        <Link to={ROUTES.INDEX}>
           <Logo />
         </Link>
         <nav className={styles.nav}>

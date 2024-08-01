@@ -1,20 +1,20 @@
 import type { RefAttributes } from 'react';
 import { forwardRef } from 'react';
-import type { LinkProps as TanStackRouterLinkProps } from '@tanstack/react-router';
-import { Link as TanStackRouterLink } from '@tanstack/react-router';
+import * as TanStackRouter from '@tanstack/react-router';
 import clsx from 'clsx';
 
 import styles from './Link.module.css';
 
-type LinkProps = TanStackRouterLinkProps &
+type LinkProps = TanStackRouter.LinkProps &
   RefAttributes<HTMLAnchorElement> & {
     className?: string;
     active?: boolean;
   };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ active = false, children, className, ...props }, ref) => (
-    <TanStackRouterLink
+  ({ active = false, children, to, className, ...props }, ref) => (
+    <TanStackRouter.Link
+      to={to}
       className={clsx(className, styles.link, { [styles.active]: active })}
       ref={ref}
       {...props}
@@ -22,6 +22,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       {typeof children === 'function'
         ? children({ isActive: active, isTransitioning: false })
         : children}
-    </TanStackRouterLink>
+    </TanStackRouter.Link>
   )
 );

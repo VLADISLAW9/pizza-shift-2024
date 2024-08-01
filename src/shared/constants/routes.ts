@@ -1,4 +1,4 @@
-export enum Routes {
-  HOME = '/',
-  AUTH = '/auth'
-}
+export const ROUTES = {
+  INDEX: '/',
+  AUTH: '/auth'
+} as const;

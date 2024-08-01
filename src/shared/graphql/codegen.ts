@@ -1,14 +1,21 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  overwrite: true,
-  schema: 'https://shift-backend.onrender.com/graphql',
-  documents: './src/shared/graphql/documents',
+  schema: './src/shared/graphql/schema.gql',
+  documents: './src/shared/graphql/documents/**/*.gql',
   generates: {
-    'src/shared/graphql': {
-      preset: 'client',
-      plugins: ['typescript', 'typescript-graphql-request', 'typescript-operations']
+    './src/shared/graphql/__generated__.ts': {
+      plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
+      presetConfig: {
+        gqlTagName: 'gql'
+      }
     }
+  },
+  ignoreNoDocuments: true,
+  config: {
+    maybeValue: 'T',
+    avoidOptionals: true,
+    immutableTypes: true
   }
 };
 

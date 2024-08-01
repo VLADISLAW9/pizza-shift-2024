@@ -10,7 +10,7 @@ interface ApolloProviderProps {
 }
 
 const client = new ApolloClient({
-  uri: 'https://flyby-router-demo.herokuapp.com/',
+  uri: `${import.meta.env.VITE_API_URL}/graphql`,
   cache: new InMemoryCache()
 });
 
