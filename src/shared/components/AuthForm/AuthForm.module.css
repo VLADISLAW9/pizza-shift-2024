@@ -3,3 +3,7 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.auth_form_error {
+  color: var(--indicator-error-color);
+}

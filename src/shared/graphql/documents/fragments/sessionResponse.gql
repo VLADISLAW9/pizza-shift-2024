@@ -1,0 +1,7 @@
+fragment SessionResponseFragment on SessionResponse {
+    user {
+        ...UserFragment
+    }
+    reason
+    success
+}

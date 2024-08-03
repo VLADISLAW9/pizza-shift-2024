@@ -1,4 +1,6 @@
 import { IMaskInput } from 'react-imask';
+import { CountDownButton } from '@components/AuthForm/components/CountDownButton/CountDownButton';
+import type { PhoneStageSchema } from '@components/AuthForm/constants/phoneStageSchema';
 import { Button } from '@ui/buttons/Button';
 import { Input } from '@ui/Input';
 import { Text } from '@ui/typography/Text';
@@ -9,7 +11,7 @@ import { useAuthForm } from './hooks/useAuthForm';
 import styles from './AuthForm.module.css';
 
 export const AuthForm = () => {
-  const { form, functions } = useAuthForm();
+  const { form, functions, state } = useAuthForm();
 
   return (
     <form className={styles.auth_form} onSubmit={functions.onSubmit}>
@@ -24,7 +26,28 @@ export const AuthForm = () => {
         mask='+7 000 000 00 00'
         placeholder='Телефон'
       />
-      <Button type='submit' variant='filled'>
+      {state.stage === 'otp' && (
+        <Input
+          {...form.getInputProps('code')}
+          component={IMaskInput}
+          mask='000000'
+          key={form.key('code')}
+          placeholder='Код'
+        />
+      )}
+      {state.stage === 'otp' && (
+        <CountDownButton
+          onRetrySendOtpCode={functions.handleCreateOtpCode}
+          loading={state.loading}
+          endTime={state.submittedPhones[(form.values as PhoneStageSchema).phone]}
+        />
+      )}
+      {state.error && (
+        <Text size='xs' className={styles.auth_form_error}>
+          {state.error}
+        </Text>
+      )}
+      <Button loading={state.loading} type='submit' variant='filled'>
         Продолжить
       </Button>
     </form>

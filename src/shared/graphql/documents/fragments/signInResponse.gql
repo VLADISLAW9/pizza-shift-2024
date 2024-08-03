@@ -1,0 +1,8 @@
+fragment SignInResponseFragment on SignInResponse {
+    user {
+        ...UserFragment
+    }
+    token
+    success
+    reason
+}

@@ -1,0 +1,5 @@
+fragment OtpResponseFragment on OtpResponse {
+    retryDelay
+    success
+    reason
+}
