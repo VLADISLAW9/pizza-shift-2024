@@ -28,6 +28,7 @@
     "@mantine/core": "^7.11.2",
     "@mantine/form": "^7.11.2",
     "@mantine/hooks": "^7.11.2",
+    "@siberiacancode/reactuse": "^0.0.60",
     "@tanstack/react-router": "^1.45.10",
     "clsx": "^2.1.1",
     "graphql": "^16.9.0",

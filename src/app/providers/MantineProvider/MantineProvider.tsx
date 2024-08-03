@@ -6,8 +6,7 @@ import { font } from './constants/font';
 const theme = Mantine.createTheme({
   primaryColor: 'orange',
   colors,
-  fontSizes: font.fontSizes,
-  fontFamily: font.fontFamily
+  ...font
 });
 
 export const MantineProvider = ({ children, ...props }: Mantine.MantineProviderProps) => (

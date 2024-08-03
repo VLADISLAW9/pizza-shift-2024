@@ -30,7 +30,8 @@ export const AuthForm = () => {
         <Input
           {...form.getInputProps('code')}
           component={IMaskInput}
-          mask='000000'
+          mask={Number}
+          maxLength={6}
           key={form.key('code')}
           placeholder='Код'
         />
