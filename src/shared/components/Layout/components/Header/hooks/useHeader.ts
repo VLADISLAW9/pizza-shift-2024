@@ -1,9 +1,13 @@
 import { useModal } from '@hooks/useModal';
 
+import { useGetSessionSuspenseQuery } from '@/shared/graphql/__generated__';
+
 import { getNavItemsList } from '../selectors/getNavItems';
 
 export const useHeader = () => {
-  const isLoggedIn = false;
+  const sessionQuery = useGetSessionSuspenseQuery();
+
+  const isLoggedIn = !!sessionQuery.data?.session.user;
 
   const [isOpenAuthModal, { open: openAuthModal, close: closeAuthModal }] = useModal();
 

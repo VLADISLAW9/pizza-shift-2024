@@ -1,1 +1,5 @@
-export const IndexPage = () => <div>123</div>;
+export const IndexPage = () => (
+  <div>
+    <h1>Index Page</h1>
+  </div>
+);

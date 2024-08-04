@@ -1,27 +1,23 @@
 import { useState } from 'react';
+import { LOCAL_STORAGE } from '@constants/localStorage';
 import { useForm, zodResolver } from '@mantine/form';
 
 import {
-  GetSessionDocument,
   useCreateOtpMutation,
   useGetSessionQuery,
   useSignInMutation
 } from '@/shared/graphql/__generated__';
+import { convertPhoneToValidFormat } from '@/shared/utils/convertPhoneToValidFormat';
 
 import type { OtpStageSchema } from '../constants/otpStageSchema';
 import { otpStageSchema } from '../constants/otpStageSchema';
 import type { PhoneStageSchema } from '../constants/phoneStageSchema';
 import { phoneStageSchema } from '../constants/phoneStageSchema';
-import { convertPhoneToValidFormat } from '@/shared/utils/convertPhoneToValidFormat';
-import { LOCAL_STORAGE } from '@constants/localStorage';
-import { useApolloClient } from '@apollo/client';
 
 export const useAuthForm = () => {
-  const client = useApolloClient();
-
-  const [createOtpMutation, createOtpStates] = useCreateOtpMutation();
-  const [signInMutation, signInStates] = useSignInMutation();
   const sessionQuery = useGetSessionQuery();
+  const [signInMutation, signInStates] = useSignInMutation();
+  const [createOtpMutation, createOtpStates] = useCreateOtpMutation();
 
   const [submittedPhones, setSubmittedPhones] = useState<{
     [key: string]: number;
@@ -92,21 +88,7 @@ export const useAuthForm = () => {
     }
 
     localStorage.setItem(LOCAL_STORAGE.AUTH_TOKEN, signInResponse.data.signin.token);
-
-    client.writeQuery({
-      query: GetSessionDocument,
-      data: {
-        session: {
-          user: signInResponse.data.signin.user,
-          success: signInResponse.data.signin.success
-        }
-      }
-    });
-
-    // TODO: write user to apollo cache
-
-    console.log('response', signInResponse.data.signin);
-    console.log('session', sessionQuery.data);
+    sessionQuery.refetch();
   };
 
   const onSubmit = form.onSubmit((formValues) => {
