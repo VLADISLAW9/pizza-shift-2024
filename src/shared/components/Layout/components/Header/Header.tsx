@@ -1,6 +1,5 @@
 import CartIcon from '@assets/icons/cart.svg';
 import ExitIcon from '@assets/icons/exit.svg';
-import { AuthForm } from '@components/AuthForm/AuthForm';
 import { ROUTES } from '@constants/routes';
 import { UnstyledButton } from '@ui/buttons/UnstyledButton';
 import { Link } from '@ui/Link';
@@ -11,9 +10,12 @@ import { Text } from '@ui/typography/Text';
 import { useHeader } from './hooks/useHeader';
 
 import styles from './Header.module.css';
+import { AuthForm } from '../AuthForm';
 
 export const Header = () => {
   const { state, functions } = useHeader();
+
+  state;
 
   return (
     <>

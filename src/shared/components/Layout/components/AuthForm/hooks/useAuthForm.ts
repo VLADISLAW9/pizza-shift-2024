@@ -9,10 +9,10 @@ import {
 } from '@/shared/graphql/__generated__';
 import { convertPhoneToValidFormat } from '@/shared/utils/convertPhoneToValidFormat';
 
-import type { OtpStageSchema } from '../constants/otpStageSchema';
-import { otpStageSchema } from '../constants/otpStageSchema';
-import type { PhoneStageSchema } from '../constants/phoneStageSchema';
-import { phoneStageSchema } from '../constants/phoneStageSchema';
+import type { OtpStageSchema } from '@components/Layout/components/AuthForm/constants/otpStageSchema';
+import { otpStageSchema } from '@components/Layout/components/AuthForm/constants/otpStageSchema';
+import type { PhoneStageSchema } from '@components/Layout/components/AuthForm/constants/phoneStageSchema';
+import { phoneStageSchema } from '@components/Layout/components/AuthForm/constants/phoneStageSchema';
 
 export const useAuthForm = () => {
   const sessionQuery = useGetSessionQuery();

@@ -1,16 +1,13 @@
-import { useApolloClient } from '@apollo/client';
-
-import { GetSessionDocument } from '@/shared/graphql/__generated__';
+import { useGetPizzasCatalogQuery } from '@/shared/graphql/__generated__';
 
 export const useIndexPage = () => {
-  const client = useApolloClient();
+  const pizzasCatalogQuery = useGetPizzasCatalogQuery();
 
-  const sessionData = client.cache.read({
-    query: GetSessionDocument,
-    optimistic: true
-  });
-
-  console.log(sessionData);
-
-  return {};
+  return {
+    state: {
+      pizzasCatalog: pizzasCatalogQuery.data?.getPizzasCatalog.catalog ?? [],
+      loading: pizzasCatalogQuery.loading,
+      error: pizzasCatalogQuery.error?.message || pizzasCatalogQuery.data?.getPizzasCatalog.reason
+    }
+  };
 };

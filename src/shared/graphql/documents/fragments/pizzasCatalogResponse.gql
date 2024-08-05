@@ -1,0 +1,13 @@
+fragment PizzasCatalogResponseFragment on PizzasResponse {
+    reason
+    success
+    catalog {
+        description
+        id
+        name
+        img
+        sizes {
+            price
+        }
+    }
+}

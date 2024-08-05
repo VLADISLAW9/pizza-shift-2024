@@ -5,20 +5,16 @@ export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
-  [_ in K]?: never;
-};
-export type Incremental<T> =
-  | T
-  | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
 };
 
 export type BaseResponse = {
@@ -472,23 +468,28 @@ export type Mutation = {
   readonly updateProfile: UpdateProfileResponse;
 };
 
+
 export type MutationCalculateDeliveryArgs = {
   package: CalculateDeliveryPackageDto;
   receiverPoint: CalculateDeliveryPointDto;
   senderPoint: CalculateDeliveryPointDto;
 };
 
+
 export type MutationCancelCinemaOrderArgs = {
   orderId: Scalars['String']['input'];
 };
+
 
 export type MutationCancelDeliveryOrderArgs = {
   orderId: Scalars['String']['input'];
 };
 
+
 export type MutationCancelPizzaOrderArgs = {
   orderId: Scalars['String']['input'];
 };
+
 
 export type MutationCreateCinemaPaymentArgs = {
   debitCard: CreatePaymentDebitCardDto;
@@ -497,6 +498,7 @@ export type MutationCreateCinemaPaymentArgs = {
   seance: CreatePaymentSeanceDto;
   tickets: ReadonlyArray<CreatePaymentTicketsDto>;
 };
+
 
 export type MutationCreateDeliveryOrderArgs = {
   option: CreateDeliveryOrderDeliveryOptionDto;
@@ -509,9 +511,11 @@ export type MutationCreateDeliveryOrderArgs = {
   senderPoint: CreateDeliveryOrderPointDto;
 };
 
+
 export type MutationCreateOtpArgs = {
   phone: Scalars['String']['input'];
 };
+
 
 export type MutationCreatePizzaPaymentArgs = {
   debitCard: CreatePizzaPaymentDebitCardDto;
@@ -520,10 +524,12 @@ export type MutationCreatePizzaPaymentArgs = {
   receiverAddress: CreatePizzaPaymentAddressDto;
 };
 
+
 export type MutationSigninArgs = {
   code: Scalars['Float']['input'];
   phone: Scalars['String']['input'];
 };
+
 
 export type MutationUpdateProfileArgs = {
   phone: Scalars['String']['input'];
@@ -748,17 +754,21 @@ export type Query = {
   readonly session: SessionResponse;
 };
 
+
 export type QueryGetDeliveryOrderArgs = {
   orderId: Scalars['String']['input'];
 };
+
 
 export type QueryGetFilmArgs = {
   filmId: Scalars['String']['input'];
 };
 
+
 export type QueryGetFilmScheduleArgs = {
   filmId: Scalars['String']['input'];
 };
+
 
 export type QueryGetPizzaOrderArgs = {
   orderId: Scalars['String']['input'];
@@ -875,162 +885,100 @@ export type UserInput = {
   readonly phone: Scalars['String']['input'];
 };
 
-export type OtpResponseFragmentFragment = {
-  readonly __typename?: 'OtpResponse';
-  readonly retryDelay: number;
-  readonly success: boolean;
-  readonly reason: string;
-};
+export type OtpResponseFragmentFragment = { readonly __typename?: 'OtpResponse', readonly retryDelay: number, readonly success: boolean, readonly reason: string };
 
-export type SessionResponseFragmentFragment = {
-  readonly __typename?: 'SessionResponse';
-  readonly reason: string;
-  readonly success: boolean;
-  readonly user: {
-    readonly __typename?: 'User';
-    readonly phone: string;
-    readonly middlename: string;
-    readonly lastname: string;
-    readonly city: string;
-    readonly firstname: string;
-    readonly email: string;
-  };
-};
+export type PizzasCatalogResponseFragmentFragment = { readonly __typename?: 'PizzasResponse', readonly reason: string, readonly success: boolean, readonly catalog: ReadonlyArray<{ readonly __typename?: 'Pizza', readonly description: string, readonly id: string, readonly name: string, readonly img: string, readonly sizes: ReadonlyArray<{ readonly __typename?: 'PizzaSize', readonly price: number }> }> };
 
-export type SignInResponseFragmentFragment = {
-  readonly __typename?: 'SignInResponse';
-  readonly token: string;
-  readonly success: boolean;
-  readonly reason: string;
-  readonly user: {
-    readonly __typename?: 'User';
-    readonly phone: string;
-    readonly middlename: string;
-    readonly lastname: string;
-    readonly city: string;
-    readonly firstname: string;
-    readonly email: string;
-  };
-};
+export type SessionResponseFragmentFragment = { readonly __typename?: 'SessionResponse', readonly reason: string, readonly success: boolean, readonly user: { readonly __typename?: 'User', readonly phone: string, readonly middlename: string, readonly lastname: string, readonly city: string, readonly firstname: string, readonly email: string } };
 
-export type UserFragmentFragment = {
-  readonly __typename?: 'User';
-  readonly phone: string;
-  readonly middlename: string;
-  readonly lastname: string;
-  readonly city: string;
-  readonly firstname: string;
-  readonly email: string;
-};
+export type SignInResponseFragmentFragment = { readonly __typename?: 'SignInResponse', readonly token: string, readonly success: boolean, readonly reason: string, readonly user: { readonly __typename?: 'User', readonly phone: string, readonly middlename: string, readonly lastname: string, readonly city: string, readonly firstname: string, readonly email: string } };
+
+export type UserFragmentFragment = { readonly __typename?: 'User', readonly phone: string, readonly middlename: string, readonly lastname: string, readonly city: string, readonly firstname: string, readonly email: string };
 
 export type CreateOtpMutationVariables = Exact<{
   phone: Scalars['String']['input'];
 }>;
 
-export type CreateOtpMutation = {
-  readonly __typename?: 'Mutation';
-  readonly createOtp: {
-    readonly __typename?: 'OtpResponse';
-    readonly retryDelay: number;
-    readonly success: boolean;
-    readonly reason: string;
-  };
-};
+
+export type CreateOtpMutation = { readonly __typename?: 'Mutation', readonly createOtp: { readonly __typename?: 'OtpResponse', readonly retryDelay: number, readonly success: boolean, readonly reason: string } };
 
 export type SignInMutationVariables = Exact<{
   phone: Scalars['String']['input'];
   code: Scalars['Float']['input'];
 }>;
 
-export type SignInMutation = {
-  readonly __typename?: 'Mutation';
-  readonly signin: {
-    readonly __typename?: 'SignInResponse';
-    readonly token: string;
-    readonly success: boolean;
-    readonly reason: string;
-    readonly user: {
-      readonly __typename?: 'User';
-      readonly phone: string;
-      readonly middlename: string;
-      readonly lastname: string;
-      readonly city: string;
-      readonly firstname: string;
-      readonly email: string;
-    };
-  };
-};
 
-export type GetSessionQueryVariables = Exact<{ [key: string]: never }>;
+export type SignInMutation = { readonly __typename?: 'Mutation', readonly signin: { readonly __typename?: 'SignInResponse', readonly token: string, readonly success: boolean, readonly reason: string, readonly user: { readonly __typename?: 'User', readonly phone: string, readonly middlename: string, readonly lastname: string, readonly city: string, readonly firstname: string, readonly email: string } } };
 
-export type GetSessionQuery = {
-  readonly __typename?: 'Query';
-  readonly session: {
-    readonly __typename?: 'SessionResponse';
-    readonly reason: string;
-    readonly success: boolean;
-    readonly user: {
-      readonly __typename?: 'User';
-      readonly phone: string;
-      readonly middlename: string;
-      readonly lastname: string;
-      readonly city: string;
-      readonly firstname: string;
-      readonly email: string;
-    };
-  };
-};
+export type GetPizzasCatalogQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPizzasCatalogQuery = { readonly __typename?: 'Query', readonly getPizzasCatalog: { readonly __typename?: 'PizzasResponse', readonly reason: string, readonly success: boolean, readonly catalog: ReadonlyArray<{ readonly __typename?: 'Pizza', readonly description: string, readonly id: string, readonly name: string, readonly img: string, readonly sizes: ReadonlyArray<{ readonly __typename?: 'PizzaSize', readonly price: number }> }> } };
+
+export type GetSessionQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSessionQuery = { readonly __typename?: 'Query', readonly session: { readonly __typename?: 'SessionResponse', readonly reason: string, readonly success: boolean, readonly user: { readonly __typename?: 'User', readonly phone: string, readonly middlename: string, readonly lastname: string, readonly city: string, readonly firstname: string, readonly email: string } } };
 
 export const OtpResponseFragmentFragmentDoc = gql`
-  fragment OtpResponseFragment on OtpResponse {
-    retryDelay
-    success
-    reason
+    fragment OtpResponseFragment on OtpResponse {
+  retryDelay
+  success
+  reason
+}
+    `;
+export const PizzasCatalogResponseFragmentFragmentDoc = gql`
+    fragment PizzasCatalogResponseFragment on PizzasResponse {
+  reason
+  success
+  catalog {
+    description
+    id
+    name
+    img
+    sizes {
+      price
+    }
   }
-`;
+}
+    `;
 export const UserFragmentFragmentDoc = gql`
-  fragment UserFragment on User {
-    phone
-    middlename
-    lastname
-    city
-    firstname
-    email
-  }
-`;
+    fragment UserFragment on User {
+  phone
+  middlename
+  lastname
+  city
+  firstname
+  email
+}
+    `;
 export const SessionResponseFragmentFragmentDoc = gql`
-  fragment SessionResponseFragment on SessionResponse {
-    user {
-      ...UserFragment
-    }
-    reason
-    success
+    fragment SessionResponseFragment on SessionResponse {
+  user {
+    ...UserFragment
   }
-  ${UserFragmentFragmentDoc}
-`;
+  reason
+  success
+}
+    ${UserFragmentFragmentDoc}`;
 export const SignInResponseFragmentFragmentDoc = gql`
-  fragment SignInResponseFragment on SignInResponse {
-    user {
-      ...UserFragment
-    }
-    token
-    success
-    reason
+    fragment SignInResponseFragment on SignInResponse {
+  user {
+    ...UserFragment
   }
-  ${UserFragmentFragmentDoc}
-`;
+  token
+  success
+  reason
+}
+    ${UserFragmentFragmentDoc}`;
 export const CreateOtpDocument = gql`
-  mutation createOtp($phone: String!) {
-    createOtp(phone: $phone) {
-      ...OtpResponseFragment
-    }
+    mutation createOtp($phone: String!) {
+  createOtp(phone: $phone) {
+    ...OtpResponseFragment
   }
-  ${OtpResponseFragmentFragmentDoc}
-`;
-export type CreateOtpMutationFn = Apollo.MutationFunction<
-  CreateOtpMutation,
-  CreateOtpMutationVariables
->;
+}
+    ${OtpResponseFragmentFragmentDoc}`;
+export type CreateOtpMutationFn = Apollo.MutationFunction<CreateOtpMutation, CreateOtpMutationVariables>;
 
 /**
  * __useCreateOtpMutation__
@@ -1049,29 +997,20 @@ export type CreateOtpMutationFn = Apollo.MutationFunction<
  *   },
  * });
  */
-export function useCreateOtpMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateOtpMutation, CreateOtpMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateOtpMutation, CreateOtpMutationVariables>(
-    CreateOtpDocument,
-    options
-  );
-}
+export function useCreateOtpMutation(baseOptions?: Apollo.MutationHookOptions<CreateOtpMutation, CreateOtpMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateOtpMutation, CreateOtpMutationVariables>(CreateOtpDocument, options);
+      }
 export type CreateOtpMutationHookResult = ReturnType<typeof useCreateOtpMutation>;
 export type CreateOtpMutationResult = Apollo.MutationResult<CreateOtpMutation>;
-export type CreateOtpMutationOptions = Apollo.BaseMutationOptions<
-  CreateOtpMutation,
-  CreateOtpMutationVariables
->;
+export type CreateOtpMutationOptions = Apollo.BaseMutationOptions<CreateOtpMutation, CreateOtpMutationVariables>;
 export const SignInDocument = gql`
-  mutation signIn($phone: String!, $code: Float!) {
-    signin(phone: $phone, code: $code) {
-      ...SignInResponseFragment
-    }
+    mutation signIn($phone: String!, $code: Float!) {
+  signin(phone: $phone, code: $code) {
+    ...SignInResponseFragment
   }
-  ${SignInResponseFragmentFragmentDoc}
-`;
+}
+    ${SignInResponseFragmentFragmentDoc}`;
 export type SignInMutationFn = Apollo.MutationFunction<SignInMutation, SignInMutationVariables>;
 
 /**
@@ -1092,26 +1031,59 @@ export type SignInMutationFn = Apollo.MutationFunction<SignInMutation, SignInMut
  *   },
  * });
  */
-export function useSignInMutation(
-  baseOptions?: Apollo.MutationHookOptions<SignInMutation, SignInMutationVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<SignInMutation, SignInMutationVariables>(SignInDocument, options);
-}
+export function useSignInMutation(baseOptions?: Apollo.MutationHookOptions<SignInMutation, SignInMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<SignInMutation, SignInMutationVariables>(SignInDocument, options);
+      }
 export type SignInMutationHookResult = ReturnType<typeof useSignInMutation>;
 export type SignInMutationResult = Apollo.MutationResult<SignInMutation>;
-export type SignInMutationOptions = Apollo.BaseMutationOptions<
-  SignInMutation,
-  SignInMutationVariables
->;
-export const GetSessionDocument = gql`
-  query getSession {
-    session {
-      ...SessionResponseFragment
-    }
+export type SignInMutationOptions = Apollo.BaseMutationOptions<SignInMutation, SignInMutationVariables>;
+export const GetPizzasCatalogDocument = gql`
+    query getPizzasCatalog {
+  getPizzasCatalog {
+    ...PizzasCatalogResponseFragment
   }
-  ${SessionResponseFragmentFragmentDoc}
-`;
+}
+    ${PizzasCatalogResponseFragmentFragmentDoc}`;
+
+/**
+ * __useGetPizzasCatalogQuery__
+ *
+ * To run a query within a React component, call `useGetPizzasCatalogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPizzasCatalogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPizzasCatalogQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPizzasCatalogQuery(baseOptions?: Apollo.QueryHookOptions<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>(GetPizzasCatalogDocument, options);
+      }
+export function useGetPizzasCatalogLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>(GetPizzasCatalogDocument, options);
+        }
+export function useGetPizzasCatalogSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>(GetPizzasCatalogDocument, options);
+        }
+export type GetPizzasCatalogQueryHookResult = ReturnType<typeof useGetPizzasCatalogQuery>;
+export type GetPizzasCatalogLazyQueryHookResult = ReturnType<typeof useGetPizzasCatalogLazyQuery>;
+export type GetPizzasCatalogSuspenseQueryHookResult = ReturnType<typeof useGetPizzasCatalogSuspenseQuery>;
+export type GetPizzasCatalogQueryResult = Apollo.QueryResult<GetPizzasCatalogQuery, GetPizzasCatalogQueryVariables>;
+export const GetSessionDocument = gql`
+    query getSession {
+  session {
+    ...SessionResponseFragment
+  }
+}
+    ${SessionResponseFragmentFragmentDoc}`;
 
 /**
  * __useGetSessionQuery__
@@ -1128,30 +1100,18 @@ export const GetSessionDocument = gql`
  *   },
  * });
  */
-export function useGetSessionQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetSessionQuery, GetSessionQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
-}
-export function useGetSessionLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetSessionQuery, GetSessionQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetSessionQuery, GetSessionQueryVariables>(
-    GetSessionDocument,
-    options
-  );
-}
-export function useGetSessionSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetSessionQuery, GetSessionQueryVariables>
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetSessionQuery, GetSessionQueryVariables>(
-    GetSessionDocument,
-    options
-  );
-}
+export function useGetSessionQuery(baseOptions?: Apollo.QueryHookOptions<GetSessionQuery, GetSessionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
+      }
+export function useGetSessionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetSessionQuery, GetSessionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
+        }
+export function useGetSessionSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetSessionQuery, GetSessionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetSessionQuery, GetSessionQueryVariables>(GetSessionDocument, options);
+        }
 export type GetSessionQueryHookResult = ReturnType<typeof useGetSessionQuery>;
 export type GetSessionLazyQueryHookResult = ReturnType<typeof useGetSessionLazyQuery>;
 export type GetSessionSuspenseQueryHookResult = ReturnType<typeof useGetSessionSuspenseQuery>;
