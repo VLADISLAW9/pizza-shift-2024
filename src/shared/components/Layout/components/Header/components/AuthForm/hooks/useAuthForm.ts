@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import type { OtpStageSchema } from '@components/Layout/components/Header/components/AuthForm/constants/otpStageSchema';
+import { otpStageSchema } from '@components/Layout/components/Header/components/AuthForm/constants/otpStageSchema';
+import type { PhoneStageSchema } from '@components/Layout/components/Header/components/AuthForm/constants/phoneStageSchema';
+import { phoneStageSchema } from '@components/Layout/components/Header/components/AuthForm/constants/phoneStageSchema';
 import { LOCAL_STORAGE } from '@constants/localStorage';
 import { useForm, zodResolver } from '@mantine/form';
 
@@ -8,11 +12,6 @@ import {
   useSignInMutation
 } from '@/shared/graphql/__generated__';
 import { convertPhoneToValidFormat } from '@/shared/utils/convertPhoneToValidFormat';
-
-import type { OtpStageSchema } from '@components/Layout/components/AuthForm/constants/otpStageSchema';
-import { otpStageSchema } from '@components/Layout/components/AuthForm/constants/otpStageSchema';
-import type { PhoneStageSchema } from '@components/Layout/components/AuthForm/constants/phoneStageSchema';
-import { phoneStageSchema } from '@components/Layout/components/AuthForm/constants/phoneStageSchema';
 
 export const useAuthForm = () => {
   const sessionQuery = useGetSessionQuery();

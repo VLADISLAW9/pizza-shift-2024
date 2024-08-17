@@ -6,28 +6,33 @@ import { Title } from '@ui/typography/Title';
 import { convertImagePath } from '@/shared/utils/convertImagePath';
 
 import styles from './PizzaListItem.module.css';
+import { usePizzaListitem } from '@pages/IndexPage/components/PizzaListItem/hooks/usePizzaListitem';
 
 interface PizzaListItemProps {
-  name: string;
-  description: string;
-  price: number;
-  img: string;
+  id: string;
+  onPickPizza: (pizzaId: string) => void;
 }
 
-export const PizzaListItem = ({ name, description, img, price }: PizzaListItemProps) => {
+export const PizzaListItem = ({ id, onPickPizza }: PizzaListItemProps) => {
+  const { state } = usePizzaListitem(id);
+
+  if (!state.pizza) {
+    return null;
+  }
+
   return (
     <div className={styles.pizza_item}>
-      <Image src={convertImagePath(img)} className={styles.pizza_img} />
+      <Image src={convertImagePath(state.pizza.img)} className={styles.pizza_img} />
       <div className={styles.pizza_info}>
         <Title order={1} size='h4'>
-          {name}
+          {state.pizza.name}
         </Title>
         <Text className={styles.pizza_description} size='sm'>
-          {description}
+          {state.pizza.description}
         </Text>
       </div>
-      <Text fw='bold'>от {price} ₽</Text>
-      <Button>Выбрать</Button>
+      <Text fw='bold'>от {state.pizza.sizes[0].price} ₽</Text>
+      <Button onClick={() => onPickPizza(id)}>Выбрать</Button>
     </div>
   );
 };

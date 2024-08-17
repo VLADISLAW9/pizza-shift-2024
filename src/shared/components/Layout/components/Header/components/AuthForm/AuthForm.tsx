@@ -1,7 +1,7 @@
 import { IMaskInput } from 'react-imask';
-import { CountDownButton } from '@components/Layout/components/AuthForm/components/CountDownButton/CountDownButton';
-import type { PhoneStageSchema } from '@components/Layout/components/AuthForm/constants/phoneStageSchema';
-import { useAuthForm } from '@components/Layout/components/AuthForm/hooks/useAuthForm';
+import { CountDownButton } from '@components/Layout/components/Header/components/AuthForm/components/CountDownButton/CountDownButton';
+import type { PhoneStageSchema } from '@components/Layout/components/Header/components/AuthForm/constants/phoneStageSchema';
+import { useAuthForm } from '@components/Layout/components/Header/components/AuthForm/hooks/useAuthForm';
 import { Button } from '@ui/buttons/Button';
 import { Input } from '@ui/Input';
 import { Text } from '@ui/typography/Text';

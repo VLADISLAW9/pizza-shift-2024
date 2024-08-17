@@ -1,0 +1,23 @@
+.pick_pizza_img {
+  width: 220px;
+  height: 220px;
+}
+
+.pick_pizza_wrapper {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+}
+
+.pick_pizza_form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ingredient_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

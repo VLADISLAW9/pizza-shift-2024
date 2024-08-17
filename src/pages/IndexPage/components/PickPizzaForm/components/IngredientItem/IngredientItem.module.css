@@ -1,0 +1,14 @@
+.ingredients_card {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+.ingredients_img {
+    width: 80px;
+    height: 80px;
+}

@@ -1,0 +1,5 @@
+query getPizzaById($id: ID!) {
+    pizza(id: $id) @client {
+
+    }
+}

@@ -6,8 +6,14 @@ fragment PizzasCatalogResponseFragment on PizzasResponse {
         id
         name
         img
+        ingredients {
+            name
+            img
+            cost
+        }
         sizes {
-            price
+            price,
+            name
         }
     }
 }
